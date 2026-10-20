@@ -1,0 +1,36 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+            // Temporarily exclude Android UI files until we port them in Step 2
+            exclude 'a/b/AegiresApplication.java'
+            exclude 'a/b/MainActivity.java'
+            exclude 'a/b/screen/**'
+            exclude 'a/b/util/ImageLoader.java'
+            exclude 'a/b/util/SimpleMarkdown.java'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'org.json:json:20240303'
+    implementation 'com.formdev:flatlaf:3.5.2'
+}
+
+application {
+    mainClass = 'a.b.Main'
+}
